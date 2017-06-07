@@ -1,0 +1,18 @@
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+  name: web-deployment
+spec:
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        name: web
+    spec:
+      containers:
+      - image: myappconfig:v1
+        imagePullPolicy: IfNotPresent
+        name: web
+        ports:
+        - name: http-server
+          containerPort: 3000
